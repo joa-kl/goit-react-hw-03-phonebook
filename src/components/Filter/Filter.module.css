@@ -1,0 +1,20 @@
+.container {
+    width: 200px;
+    display: flex;
+    flex-direction: column;
+    padding-right: 100px;
+    padding-left: 10px;
+  
+}
+
+.filterLabel {
+    margin-bottom: 5px;
+    margin-top: 10px;
+    font-size: 18px;
+}
+
+.filterName:focus {
+    outline: none;
+    border: 3px solid rgba(24, 134, 255, 0.5);
+    border-radius: 4px;
+}
