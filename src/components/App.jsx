@@ -40,7 +40,6 @@ export class App extends Component {
     const name = evt.name;
     const number = evt.number;
     const contactsLists = [...this.state.contacts];
-    console.log(contactsLists);
     const doesExist = contactsLists.findIndex(contact => name === contact.name) !== -1;
 
     doesExist
