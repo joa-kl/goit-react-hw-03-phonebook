@@ -30,10 +30,11 @@ export class App extends Component {
 
     doesExist
       ? alert(`${name} is already in contacts.`)
-      : contactsLists.push({ name, id, number });
+      : contactsLists.push({ id, name, number });
     
     this.setState({ contacts: contactsLists });
     localStorage.setItem('contactList', JSON.stringify(contactsLists));
+    // localStorage.removeItem('ContactList');
   };
 
   handleContactDelete = evt => {
@@ -48,10 +49,7 @@ export class App extends Component {
         .toLowerCase()
         .includes(this.state.filter.toLowerCase());
     });
-
-    
     return filterContactsList;
-    // return localStorage.setItem('ContactList', JSON.stringify(filterContactsList));
   };
   
    render() {
