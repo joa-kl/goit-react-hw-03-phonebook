@@ -33,6 +33,7 @@ export class App extends Component {
       : contactsLists.push({ name, id, number });
     
     this.setState({ contacts: contactsLists });
+    localStorage.setItem('contactList', JSON.stringify(contactsLists));
   };
 
   handleContactDelete = evt => {
@@ -48,7 +49,9 @@ export class App extends Component {
         .includes(this.state.filter.toLowerCase());
     });
 
+    
     return filterContactsList;
+    // return localStorage.setItem('ContactList', JSON.stringify(filterContactsList));
   };
   
    render() {
