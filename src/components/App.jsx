@@ -48,8 +48,6 @@ export class App extends Component {
       : contactsLists.push({ id, name, number });
     
     this.setState({ contacts: contactsLists });
-    // localStorage.setItem('contactList', JSON.stringify(contactsLists));
-    // localStorage.removeItem('contactList');
   };
 
   handleContactDelete = evt => {
