@@ -34,7 +34,6 @@ export class App extends Component {
     
     this.setState({ contacts: contactsLists });
     localStorage.setItem('contactList', JSON.stringify(contactsLists));
-    // localStorage.removeItem('ContactList');
   };
 
   handleContactDelete = evt => {
