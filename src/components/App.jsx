@@ -16,6 +16,20 @@ export class App extends Component {
     filter: '',
   };
 
+  componentDidMount() {
+    const contactsLists = [...this.state.contacts];
+    localStorage.setItem('contactList', JSON.stringify(contactsLists));
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const prevStateContacts = prevState.contacts;
+    const nextStayContacts = this.state.contacts;
+
+    if (prevStateContacts !== nextStayContacts) {
+      localStorage.setItem('contactList', JSON.stringify(nextStayContacts));
+    }
+  }
+
   handleFilterChange = evt => {
     const { name, value } = evt.target;
     this.setState({ [name]: value });
@@ -26,6 +40,7 @@ export class App extends Component {
     const name = evt.name;
     const number = evt.number;
     const contactsLists = [...this.state.contacts];
+    console.log(contactsLists);
     const doesExist = contactsLists.findIndex(contact => name === contact.name) !== -1;
 
     doesExist
@@ -33,13 +48,17 @@ export class App extends Component {
       : contactsLists.push({ id, name, number });
     
     this.setState({ contacts: contactsLists });
-    localStorage.setItem('contactList', JSON.stringify(contactsLists));
+    // localStorage.setItem('contactList', JSON.stringify(contactsLists));
+    // localStorage.removeItem('contactList');
   };
 
   handleContactDelete = evt => {
     this.setState(prevState => ({
       contacts: prevState.contacts.filter(contact => contact.id !== evt),
     }));
+    // return contactToBeRemoved;
+    // localStorage.getItem('contactList');
+
   };
 
   getFilteredContacts = () => {
