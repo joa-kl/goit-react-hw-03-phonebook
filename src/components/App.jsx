@@ -17,16 +17,16 @@ export class App extends Component {
   };
 
   componentDidMount() {
-    const contactsLists = [...this.state.contacts];
-    localStorage.setItem('contactList', JSON.stringify(contactsLists));
+    const contacts = localStorage.getItem('contacts');
+    const parsedContacts = JSON.parse(contacts);
+    if (parsedContacts) {
+      this.setState({ contacts: parsedContacts });
+    }
   }
 
-  componentDidUpdate(prevProps, prevState) {
-    const prevStateContacts = prevState.contacts;
-    const nextStayContacts = this.state.contacts;
-
-    if (prevStateContacts !== nextStayContacts) {
-      localStorage.setItem('contactList', JSON.stringify(nextStayContacts));
+  componentDidUpdate(_, prevState) {
+    if (this.state.contacts !== prevState.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
     }
   }
 
